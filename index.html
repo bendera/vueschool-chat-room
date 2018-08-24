@@ -19,6 +19,7 @@
                 <!-- content -->
                 <p class="card-text">{{ message.text }}</p>
                 <a @click.prevent="deleteMessage(message)" href="#" class="card-link">delete</a>
+                <a @click.prevent="editMessage(message)" href="#" class="card-link">edit</a>
             </div>
         </div>
 
@@ -59,6 +60,7 @@
                 messages: [],
                 messageText: '',
                 nickname: 'hootlex',
+                editingMessage = '',
             },
 
             methods: {
@@ -68,6 +70,9 @@
                 },
                 deleteMessage(message) {
                     messagesRef.child(message.id).remove();
+                },
+                editMessage(message) {
+                    this.editingMessage = message;
                 },
             },
 
